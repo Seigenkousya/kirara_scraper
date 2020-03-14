@@ -27,7 +27,7 @@ MAXとついているがmid_get.pyで取得するデータを変えれば他の�
 詳しい概要は以下のリンクを参照。  
 [まんがタイムきららMAXの掲載順を可視化・分析する2 // 正弦工社](https://seigenkousya.github.io/post/kirara_order_2020/)  
 
-## max_scrape.py
+## max_scrape_2019.py
 旧版。  
 詳しい概要は以下のリンクを参照。  
 [どうびじゅの連載終了が告知され心と胃を痛めているきららmax読者のためのスクレイピングを使ったデータ収集と考察のススメ - Qiita](https://qiita.com/Seigenkousya/items/8f0ffbd2c34a8e8535e2)
