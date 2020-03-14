@@ -1,4 +1,6 @@
 # kirara_scraper
+![result.png](https://github.com/Seigenkousya/kirara_scraper/tree/master/result/result.png)
+
 きららの掲載順を取得し、可視化するスクリプト  
 現在はきららMAXのスクリプトを例に置いている。（書き換えることで本誌やキャラット、フォワード等にも対応可能）  
 今後すべての雑誌分のスクリプトを用意する予定。（書き換え次第更新）  
