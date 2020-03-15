@@ -9,8 +9,8 @@ from time import sleep
 import numpy as np
 import matplotlib.pyplot as plt
 
+mid_list=#input get_mid.py result here.
 month_list=['Jan.','Feb.','Mar.','Apr.','May','June','July','Aug.','Sept.','Oct.','Nov.','Dec.'];
-mid_list=['642', '646', '650', '654', '658', '662', '666', '670', '674', '678', '682', '686', '690', '694', '698', '702']
 bottom=24
 mid=187
 year=2019
