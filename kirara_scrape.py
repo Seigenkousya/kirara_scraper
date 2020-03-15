@@ -125,7 +125,6 @@ plt.title('Changes in the order of publication')
 
 for art in Article_list:
     plt.plot(X_list, art.list, '.', linestyle='solid', marker="D", markevery=art.mark_point ,label=art.label)
-    #plt.plot(X_list, art.list, label=art.label)
 
 plt.gca().invert_yaxis()
 plt.grid(color='gray')
