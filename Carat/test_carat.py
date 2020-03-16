@@ -16,7 +16,7 @@ bottom=24
 mid=187
 year=2019
 month=1
-index=0
+index=12
 
 center_colors=[]
 center_color_all=[]
@@ -65,19 +65,29 @@ html=requests.get(url)
 
 source=BeautifulSoup(html.content,"html.parser")
 
-strongs=source.find_all("strong")
-
 center_colors=[]
-for i in range(0,5):
-    center_colors.append(re.search('「.+」',strongs[i].text).group())
+
+info=(source.find_all("div",class_="info"))[1]
+strongs=info.find_all("strong")
+
+print(type(info))
+if re.search('表紙(&|＆)巻頭カラー',info.text):
+    print("both")
+    start=0
+    end=5
+else:
+    print("other")
+    start=1
+    end=6
+
+for art in strongs[start:end]:
+    center_colors.append(re.search('「.+」',art.string).group())
     center_color_all.append(center_colors[-1])
 
-#print(center_colors)
+print(center_colors)
 
-i=0
-for art in source.find("ul",class_="lineup").find_all("strong"):
+articles=source.find("ul",class_="lineup").find_all("strong")
+for art in articles:
         print(art.string)
-        print(type(art))
-        i+=1
 
-index+=1
+
