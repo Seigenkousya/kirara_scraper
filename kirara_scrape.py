@@ -9,7 +9,9 @@ from time import sleep
 import numpy as np
 import matplotlib.pyplot as plt
 
-mid_list=#input get_mid.py result here.
+#input get_mid.py result here.
+mid_list=
+
 month_list=['Jan.','Feb.','Mar.','Apr.','May','June','July','Aug.','Sept.','Oct.','Nov.','Dec.'];
 bottom=24
 mid=187

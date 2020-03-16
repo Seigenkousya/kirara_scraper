@@ -12,7 +12,7 @@ while year<=2020:
 
     print ("\n{}年".format(year))
 
-    url='http://www.dokidokivisual.com/magazine/max/backnumber/index.php?y={0}'.format(year)
+    url='http://www.dokidokivisual.com/magazine/carat/backnumber/index.php?y={0}'.format(year)
     html=requests.get(url)
 
     source=BeautifulSoup(html.content,"html.parser")
