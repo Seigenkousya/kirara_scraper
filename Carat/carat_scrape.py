@@ -19,6 +19,11 @@ year=2019
 month=1
 index=0
 
+mark_point_x=[]
+mark_point_y=[]
+mark_point_color=[]
+color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
+
 center_colors=[]
 center_color_all=[]
 count_cc={}
@@ -32,7 +37,6 @@ class Article:
         self.keyword=_keyword
         self.list=[]
         self.center_list=[]
-        self.mark_point=[]
 
     def is_centercolor(self,center_colors):
         flag=False
@@ -40,22 +44,20 @@ class Article:
             if self.keyword in cc:
                 flag=True
                 break
-                
-        if flag:
-            self.mark_point.append(len(self.center_list))
         
         self.center_list.append(flag)
+        return flag
 
 
 Article_list=[  Article("koias","恋する"),
                 Article("ochifuru","おちこぼれ"),
-                Article("hidameri","ひだまり"),
                 Article("RPG","不動産"),
                 Article("killme","キルミー"),
                 Article("machikado","まちカド"),
                 Article("Achannel","チャンネル"),
                 Article("anima","アニマエ"),
-                Article("NEWGAME","GAME")]
+                Article("NEWGAME","GAME"),
+                Article("hidameri","ひだまり")]
 
 while index < len(mid_list):
 
@@ -100,10 +102,14 @@ while index < len(mid_list):
             
             print(i,name)
 
-            for art in Article_list:
+            for color_index,art in enumerate(Article_list):
                 if art.keyword in name and len(art.list)==index:
                     art.list.append(i)
-                    art.is_centercolor(center_colors)
+                    if art.is_centercolor(center_colors):
+                        mark_point_x.append(index)
+                        mark_point_y.append(i)
+                        mark_point_color.append(color_cycle[color_index])
+
         except:
             pass 
 
@@ -128,7 +134,6 @@ for art in Article_list:
     print(art.label)
     print(art.list)
     print(art.center_list)
-    print(art.mark_point)
 
 X_list=list(range(len(mid_list)))
 plt.xlabel('Publication issue')
@@ -138,6 +143,10 @@ plt.title('Changes in the order of publication')
 for art in Article_list:
     #plt.plot(X_list, art.list, linestyle='solid', marker="D", markevery=art.mark_point ,label=art.label)
     plt.plot(X_list, art.list, linestyle='solid', marker=".", label=art.label)
+
+for _x,_y,_color in zip(mark_point_x,mark_point_y,mark_point_color):
+    #plt.plot(_x, _y, linestyle='none', marker='D', color=_color, label="Center color")
+    plt.plot(_x, _y, linestyle='none', marker='D', color=_color)
 
 plt.gca().invert_yaxis()
 plt.grid(color='gray')
