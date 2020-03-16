@@ -141,11 +141,9 @@ plt.ylabel('Publication order')
 plt.title('Changes in the order of publication')
 
 for art in Article_list:
-    #plt.plot(X_list, art.list, linestyle='solid', marker="D", markevery=art.mark_point ,label=art.label)
     plt.plot(X_list, art.list, linestyle='solid', marker=".", label=art.label)
 
 for _x,_y,_color in zip(mark_point_x,mark_point_y,mark_point_color):
-    #plt.plot(_x, _y, linestyle='none', marker='D', color=_color, label="Center color")
     plt.plot(_x, _y, linestyle='none', marker='D', color=_color)
 
 plt.gca().invert_yaxis()
