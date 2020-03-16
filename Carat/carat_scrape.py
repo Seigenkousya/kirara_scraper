@@ -120,7 +120,6 @@ while index < len(mid_list):
     else:
         month+=1
 
-
     sleep(1)
 
 print(collections.Counter(center_color_all))
