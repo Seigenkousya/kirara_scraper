@@ -27,7 +27,7 @@ center_color_all=[]
 
 date_list=[]
 date_place=[]
-
+error_list=[]
 
 class Article:
     def __init__(self,_label,_keyword):
@@ -75,10 +75,11 @@ while index < len(mid_list):
         _result=re.search('センターカラー|巻頭カラー',strongs[i].text)
         if _result!= None:
             try:
-                center_colors.append(re.search('『.+』',strongs[i+1].text).group())
+                center_colors.append(re.search('(「|『).+(」|』)',strongs[i+1].text).group())
                 center_color_all.append(center_colors[-1])
             except:
                 print("Not Found.")
+                error_list.append("{}年{}月号".format(year,month))
 
     print(center_colors)
     
@@ -148,7 +149,7 @@ print(Article_list[2].count_cc)
 print(Article_list[2].count_article-36)
 print(Article_list[2].count_cc/(Article_list[2].count_article-36))
 
-
+print(list(set(error_list)))
 
 plt.gca().invert_yaxis()
 plt.grid(color='gray')

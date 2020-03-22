@@ -7,7 +7,7 @@
 
 # usage
 1. mid_get.pyでスクレイピングに必要なデータを取得
-1. max_scrape_2020.pyでデータを取得し、
+1. 任意のスクリプトでデータを取得し、
 1. 収集したデータをもとにグラフ化
 
 ## mid_get.py
@@ -25,7 +25,7 @@ MAXとついているがmid_get.pyで取得するデータを変えれば他の�
 - 今までfontタグを使って掲載順を判断していたが余計な文章が増えていたので```<font color="8000FF">```で囲われた部分だけを採用するようにした
 
 詳しい概要は以下のリンクを参照。  
-[まんがタイムきららMAXの掲載順を可視化・分析する2 // 正弦工社](https://seigenkousya.github.io/post/kirara_order_2020/)  
+[まんがタイムきららMAXの掲載順を可視化・分析する2 - 正弦工社](https://seigenkousya.github.io/post/kirara_order_2020/)  
 
 ## max_scrape_2019.py
 旧版。  
