@@ -2,8 +2,8 @@
 ![result.png](https://github.com/Seigenkousya/kirara_scraper/blob/master/result/max_result.png)
 
 きららの掲載順を取得し、可視化するスクリプト  
-現在はきららMAXのスクリプトを例に置いている。（書き換えることで本誌やキャラット、フォワード等にも対応可能）  
-今後すべての雑誌分のスクリプトを用意する予定。（書き換え次第更新）  
+現在はきららMAXとキャラットに対応しているスクリプトを用意している。  
+今後残りのきらら本誌、ミラク、フォワードについても対応する予定。（開発次第更新）  
 
 # usage
 1. mid_get.pyでスクレイピングに必要なデータを取得
@@ -27,11 +27,24 @@ MAXとついているがmid_get.pyで取得するデータを変えれば他の�
 詳しい概要は以下のリンクを参照。  
 [まんがタイムきららMAXの掲載順を可視化・分析する2 - 正弦工社](https://seigenkousya.github.io/post/kirara_order_2020/)  
 
+## carat_scrape_2020.py
+キャラット版。  
+MAXで使用したスクリプトをそのまま流用できなかったため書き直し。  
+同じくmidについてはmid_get.pyを使って取得する。  
+
+詳しい概要は以下のリンクを参照。  
+[まんがタイムきららキャラットの掲載順を可視化・分析する2020   - 正弦工社](https://seigenkousya.github.io/post/carat_order_2020/)  
+
 ## max_scrape_2019.py
 旧版。  
 詳しい概要は以下のリンクを参照。  
 [どうびじゅの連載終了が告知され心と胃を痛めているきららmax読者のためのスクレイピングを使ったデータ収集と考察のススメ - Qiita](https://qiita.com/Seigenkousya/items/8f0ffbd2c34a8e8535e2)
 
-
+# contact
+正弦工社【セイゲンコウシャ】  
+きららと百合のための研究・評論・技術開発を行う謎の団体。
+  
+homopage:[https://seigenkousya.github.io/](https://seigenkousya.github.io/)  
+twitter:[https://twitter.com/Seigenkousya](https://twitter.com/Seigenkousya)  
 
 
