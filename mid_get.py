@@ -5,14 +5,14 @@ import re
 from bs4 import BeautifulSoup
 from time import sleep
 
-year=2011
+year=2019
 mid_list=[]
 
 while year<=2020:
 
     print ("\n{}年".format(year))
 
-    url='http://www.dokidokivisual.com/magazine/max/backnumber/index.php?y={0}'.format(year)
+    url='http://www.dokidokivisual.com/magazine/kirara/backnumber/index.php?y={0}'.format(year)
     html=requests.get(url)
 
     source=BeautifulSoup(html.content,"html.parser")

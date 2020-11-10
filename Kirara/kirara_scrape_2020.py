@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 month_list=['Jan.','Feb.','Mar.','Apr.','May','June','July','Aug.','Sept.','Oct.','Nov.','Dec.']
-mid_list=['642', '646', '650', '654', '658', '662', '666', '670', '674', '678', '682', '686', '690', '694', '698', '702', '706', '710', '714', '718', '722','726','730','734']
+mid_list=['645', '649', '653', '657', '661', '665', '669', '673', '677', '681', '685', '689', '693', '697', '701', '705', '709', '713', '717', '721', '725', '729', '733', '737']
 bottom=24
 mid=187
 year=2019
@@ -47,14 +47,11 @@ class Article:
         self.center_list.append(flag)
         return flag
 
-Article_list=[  Article("bozaro","ぼっち"),
-                Article("syachiku","社畜さん"),
-                Article("umirie","旅する海と"),
-                Article("syouko","しょうこセンセイ"),
-                Article("kinmoza","きんいろ"),
-                Article("gochiusa","ご注文は"),
-                Article("comic_girls","こみっくが"),
-                Article("stella","ステラのまほう")]
+Article_list=[  Article("hoshiukuzu","星屑"),
+                Article("slowstart","スロウスタート"),
+                Article("yuyushiki","ゆゆ式"),
+                Article("hanamaru","はなまるスキップ"),
+                Article("facedown","下を向いて歩こう")]
                 
 while index < len(mid_list):
 
@@ -63,7 +60,7 @@ while index < len(mid_list):
     date_list.append(str(year)+"\n"+month_list[month-1]);
     date_place.append(index)
 
-    url='http://www.dokidokivisual.com/magazine/max/book/index.php?mid={0}'.format(mid_list[index])
+    url='http://www.dokidokivisual.com/magazine/kirara/book/index.php?mid={0}'.format(mid_list[index])
     html=requests.get(url)
 
     source=BeautifulSoup(html.content,"html.parser")
@@ -71,21 +68,31 @@ while index < len(mid_list):
     strongs=source.find_all("strong")
 
     center_colors=[]
-    for i in range(0,len(strongs),2):
-        _result=re.search('センターカラー|巻頭カラー',strongs[i].text)
-        if _result!= None:
-            center_colors.append(re.search('『.+』',strongs[i+1].text).group())
-            center_color_all.append(center_colors[-1])
+    info=(source.find_all("div",class_="info"))[1]
+    strongs=info.find_all("strong")
+
+    if re.search('(表紙(&|＆))?巻頭カラー',info.text):
+        print("both")
+        start=0
+        end=5
+    else:
+        print("other")
+        start=1
+        end=6
+
+
+    for art in strongs[start:end]:
+        center_colors.append(re.search('「.+」',art.string).group())
+        center_color_all.append(center_colors[-1])
 
     print(center_colors)
-    
-    span=source.find_all("font",color="#8000FF")
 
     i=0
-    for tag in span:
+    articles=source.find("ul",class_="lineup").find_all("strong")
+    for art in articles:
         try:
             i+=1
-            name=tag.string
+            name=art.string
             
             print(i,name)
 
@@ -96,7 +103,7 @@ while index < len(mid_list):
                         mark_point_x.append(index)
                         mark_point_y.append(i)
                         mark_point_color.append(color_cycle[color_index])
-        
+
         except:
             pass 
 
@@ -112,9 +119,10 @@ while index < len(mid_list):
         month=1
     else:
         month+=1
-
-
+	
+#---DO NOT REMOVE IT---#
     sleep(1)
+#----------------------#
 
 print(collections.Counter(center_color_all))
 
@@ -123,7 +131,7 @@ for art in Article_list:
     print(art.center_list)
 
 X_list=list(range(len(mid_list)))
-plt.xlabel('Publication issue')
+plt.xlabel('Publication month')
 plt.ylabel('Publication order')
 plt.title('Changes in the order of publication')
 
@@ -137,6 +145,7 @@ for art in Article_list:
 print(mark_point_x)
 print(mark_point_y)
 print(mark_point_color)
+
 for _x,_y,_color in zip(mark_point_x,mark_point_y,mark_point_color):
     plt.plot(_x, _y, linestyle='none', marker='D', color=_color)
 
